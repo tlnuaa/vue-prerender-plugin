@@ -14,7 +14,10 @@ module.exports = {
   },
   externals: {
     'html-minifier': 'html-minifier',
-    puppeteer: 'puppeteer'
+    'url-join': 'url-join',
+    puppeteer: 'puppeteer',
+    mkdirp: 'mkdirp',
+    rimraf: 'rimraf',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

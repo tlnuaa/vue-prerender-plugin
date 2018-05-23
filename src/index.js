@@ -34,6 +34,7 @@ VuePrerenderPlugin.prototype.apply = function (compiler) {
   if (!this.options.needPrerender) return
 
   compiler.plugin('after-emit', async (compilation, callback) => {
+    console.log('[vue-prerender-plugin] Start prerender')
     const prerenderPaths = await getAndRemovePrerenderPaths(this.options)
 
     const browser = await puppeteer.launch(this.options.puppeteerLaunchOption)
@@ -45,8 +46,15 @@ VuePrerenderPlugin.prototype.apply = function (compiler) {
       let outputPath = path.join(this.options.outputDir, prerenderPath)
       let outputFile = path.join(outputPath, this.options.outputFileName)
 
-      await page.goto(url, this.options.commonQuery)
-      await frame.waitFor(this.options.waitFor)
+      console.log(`[vue-prerender-plugin] Prerendering ${url} to ${outputFile}`)
+
+      try {
+        await page.goto(url, this.options.commonQuery)
+        await frame.waitFor(this.options.waitFor)
+      } catch (e) {
+        console.error(`[vue-prerender-plugin] Wait for ${this.options.waitFor} failed, please make sure ${url} could be accessed`)
+        process.exit(1)
+      }
       let data = await frame.content()
 
       if (this.options.minify) {
