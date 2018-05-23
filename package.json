@@ -1,0 +1,56 @@
+{
+  "name": "vue-prerender-plugin",
+  "version": "1.0.1",
+  "description": "vue prerender",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lennontu/vue-prerender-plugin.git"
+  },
+  "keywords": [
+    "vue",
+    "vue-router",
+    "puppeteer",
+    "prerender",
+    "ssr",
+    "serverside-rendering"
+  ],
+  "author": "lennontu@126.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lennontu/vue-prerender-plugin/issues"
+  },
+  "homepage": "https://github.com/lennontu/vue-prerender-plugin#readme",
+  "scripts": {
+    "build": "webpack --progress --config webpack.conf.js",
+    "lint": "eslint --ext .js src"
+  },
+  "dependencies": {
+    "html-minifier": "^3.5.15",
+    "mkdirp": "^0.5.1",
+    "puppeteer": "^1.4.0",
+    "rimraf": "^2.6.2",
+    "url-join": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^3.12.0"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  }
+}
