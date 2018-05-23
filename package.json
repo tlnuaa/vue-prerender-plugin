@@ -1,6 +1,6 @@
 {
   "name": "vue-prerender-plugin",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "vue prerender plugin base on VueRouter Instance",
   "main": "dist/index.js",
   "repository": {

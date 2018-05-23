@@ -54,8 +54,16 @@ export async function getAndRemovePrerenderPaths ({router, routeParams, outputDi
 
   getRouterPaths(routes)
 
-  const rootRegEx = /^\/[^/]+\/?$/
-  const rootPrerenderPaths = new Set(prerenderPaths.filter((v) => rootRegEx.test(v)))
+  const rootRegEx = /^\/[^/]+/
+  const rootPrerenderPaths = new Set()
+
+  for (let prerenderPath of prerenderPaths) {
+    let rootPrerenderPath = rootRegEx.exec(prerenderPath)
+
+    if (Array.isArray(rootPrerenderPath)) {
+      rootPrerenderPaths.add(rootPrerenderPath[0])
+    }
+  }
 
   const removePathPromises = [...rootPrerenderPaths].map((v) => new Promise((resolve, reject) => {
     rm(path.join(outputDir, v), () => resolve())
